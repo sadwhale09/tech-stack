@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 stack = ['.Net',
  '.Net',
@@ -688,3 +689,21 @@ __import__('pprint').pprint(converted_dict, sort_dicts=False)
 # for val in converted_dict.values():
 #     print(val)
 
+
+
+y_pos = np.arange(len(converted_dict))
+# counted.sort()
+tech = converted_dict.values()
+
+fig, ax = plt.subplots()
+
+hbars = ax.barh(y_pos, tech, align='center')
+ax.set_yticks(y_pos, labels=converted_dict)
+ax.invert_yaxis()  # labels read top-to-bottom
+ax.set_title('Tech Stack')
+
+# Label with specially formatted floats
+ax.bar_label(hbars)
+# ax.set_xlim(right=max(counted)+max(counted)*0.1)  # adjust xlim to fit labels
+
+plt.show()
