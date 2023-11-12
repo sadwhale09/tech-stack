@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 keyword = 'python'
+iterations = 10
+
 url = f'https://justjoin.it/?keyword={keyword}'
 
 response = requests.get(url) 
@@ -26,19 +28,26 @@ for link in links:
 
 
 # for i in range(len(url_list)):
-for i in range(10):
-    offer = url_list[i+1]
-    url = f'https://justjoin.it{offer}'
+stack = []
+for i in range(iterations):
+    if iterations+1 <= len(url_list):
+        offer = url_list[i+1]
+        url = f'https://justjoin.it{offer}'
 
-    response = requests.get(url) 
+        response = requests.get(url) 
 
-    html_content = response.text
+        html_content = response.text
 
-    soup = BeautifulSoup(html_content, 'html.parser')
+        soup = BeautifulSoup(html_content, 'html.parser')
 
-    tech = soup.find_all('h6', class_='MuiTypography-root MuiTypography-subtitle2 css-x1xnx3')
+        tech = soup.find_all('h6', class_='MuiTypography-root MuiTypography-subtitle2 css-x1xnx3')
 
-    for t in tech:
-        print(t.text)
-    print(f'===== {i} ========================================')
+        print(f'===== {i+1} ========================================')
+        for t in tech:
+            print(t.text)
+            stack.append(t.text)
+
+print('=======================================================')
+stack.sort()
+__import__('pprint').pprint(stack)
 
