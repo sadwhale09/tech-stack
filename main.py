@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 import numpy as np
 import matplotlib.pyplot as plt
 
-keyword = 'linux'
-iterations = 10
+keyword = ''
+iterations = 100
 
 url = f'https://justjoin.it/?keyword={keyword}'
 
