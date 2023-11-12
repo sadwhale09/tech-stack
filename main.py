@@ -30,7 +30,7 @@ for link in links:
 
 # for i in range(len(url_list)):
 stack = []
-iterations = 50
+iterations = 5
 for i in range(iterations):
     if iterations+1 <= len(url_list):
         offer = url_list[i+1]
@@ -76,6 +76,6 @@ ax.set_title('Tech Stack')
 
 # Label with specially formatted floats
 ax.bar_label(hbars)
-ax.set_xlim(right=15)  # adjust xlim to fit labels
+ax.set_xlim(right=max(counted)+max(counted)*0.1)  # adjust xlim to fit labels
 
 plt.show()
