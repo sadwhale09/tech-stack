@@ -1,8 +1,9 @@
 import requests 
 from bs4 import BeautifulSoup
+import numpy as np
+import matplotlib.pyplot as plt
 
 keyword = 'python'
-iterations = 10
 
 url = f'https://justjoin.it/?keyword={keyword}'
 
@@ -29,6 +30,7 @@ for link in links:
 
 # for i in range(len(url_list)):
 stack = []
+iterations = 50
 for i in range(iterations):
     if iterations+1 <= len(url_list):
         offer = url_list[i+1]
@@ -42,12 +44,38 @@ for i in range(iterations):
 
         tech = soup.find_all('h6', class_='MuiTypography-root MuiTypography-subtitle2 css-x1xnx3')
 
-        print(f'===== {i+1} ========================================')
+        # print(f'===== {i+1} ========================================')
         for t in tech:
-            print(t.text)
+            # print(t.text)
             stack.append(t.text)
 
-print('=======================================================')
+# print('=======================================================')
 stack.sort()
-__import__('pprint').pprint(stack)
+# __import__('pprint').pprint(stack)
 
+
+
+uniq = np.unique(stack)
+
+counted = []
+for i in range(len(uniq)):
+    print(f'{uniq[i]} - {stack.count(uniq[i])}')
+    counted.append(stack.count(uniq[i]))
+
+
+y_pos = np.arange(len(uniq))
+# counted.sort()
+tech = counted
+
+fig, ax = plt.subplots()
+
+hbars = ax.barh(y_pos, tech, align='center')
+ax.set_yticks(y_pos, labels=uniq)
+ax.invert_yaxis()  # labels read top-to-bottom
+ax.set_title('Tech Stack')
+
+# Label with specially formatted floats
+ax.bar_label(hbars)
+ax.set_xlim(right=15)  # adjust xlim to fit labels
+
+plt.show()
