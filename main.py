@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import numpy as np
 import matplotlib.pyplot as plt
 
-keyword = ''
+keyword = 'python'
 iterations = 100
 
 url = f'https://justjoin.it/?keyword={keyword}'
