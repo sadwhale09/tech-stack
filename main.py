@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 keyword = 'linux'
-iterations = 10
+iterations = 100
 
 url = f'https://justjoin.it/?keyword={keyword}'
 
@@ -51,10 +51,10 @@ for i in range(iterations):
 
 # print('=======================================================')
 stack.sort()
-# __import__('pprint').pprint(stack)
+__import__('pprint').pprint(stack)
 
 
-
+'''
 uniq = np.unique(stack)
 
 counted = []
@@ -79,3 +79,4 @@ ax.bar_label(hbars)
 # ax.set_xlim(right=max(counted)+max(counted)*0.1)  # adjust xlim to fit labels
 
 plt.show()
+'''
