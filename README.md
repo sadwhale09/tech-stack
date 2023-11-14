@@ -8,6 +8,7 @@ A program that shows which technologies you may need to learn alongside your pre
 ## TODO:
 - [ ] Restrict number of entries with occurencies under 2
 - [ ] Un-hardcode variables *keyword* and *iterations*
+- [ ] Provide different sources of job info
 
 ## Usage:
 
