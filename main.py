@@ -3,8 +3,10 @@ from bs4 import BeautifulSoup
 import numpy as np
 import matplotlib.pyplot as plt
 
-keyword = 'python'
-iterations = 100
+# keyword = 'python'
+keyword = input('Keyword: ')
+# iterations = 10
+iterations = int(input('Iterations: '))
 
 url = f'https://justjoin.it/?keyword={keyword}'
 
